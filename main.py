@@ -8,7 +8,6 @@ def voiceInput(prompt:str,MicMode:bool):
         v_i = voiceRecognizer.get_input(2,prompt)
     else:
         v_i = input(u_starting + prompt)
-    
     return v_i
 
 
