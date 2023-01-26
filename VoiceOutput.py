@@ -1,5 +1,11 @@
 
-from gtts import gTTS
+import pyttsx3
+
+b_starting = ">>> "
+engine = pyttsx3.init('sapi5')
+voice = engine.getProperty('voices')
+engine.setProperty('rate',150)
+engine.setProperty('voice',voice[0].id)
 import os
 from playsound import playsound
 
@@ -7,9 +13,9 @@ language = 'en'
 
 def voiceAudioOut(prompt):
     prompt = str(prompt)
-    out = gTTS(text=prompt,lang=language,slow=False)
-    out.save("{prompt}.mp3")
-    playsound("{prompt}.mp3")
+    engine.say(prompt)
+    engine.runAndWait()
+    print(b_starting+prompt)
 
 def FaceOut(string:str):
     if len(string)%2 == 0:
